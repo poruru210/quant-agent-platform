@@ -1,0 +1,4 @@
+.wiki/
+deploy/compose/.env.state-control
+deploy/runtime/.env.research-job
+deploy/runtime/.env.live-instance
