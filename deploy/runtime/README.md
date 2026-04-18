@@ -36,8 +36,8 @@ Hermes `research_engineer` が `pi-ctl` から呼ぶ skill:
 
 - `nautilus-backtest`
 - `nautilus-replay`
-- `run_feature_job`
-- `run_simulation`
+- `feature-generation`
+- `simulation-run`
 
 実行単位:
 

@@ -25,6 +25,7 @@
 
 補足:
 
+- 恒久方針は [SOUL.md](D:/GitHub/quant-agent-platform/SOUL.md) を参照
 - `Paperclip -> Hermes` と `LLM-WIKI` の実 IF 調査結果は [paperclip-hermes-llm-wiki-if.md](D:/GitHub/quant-agent-platform/docs/paperclip-hermes-llm-wiki-if.md) を参照
 - 本設計書は role / baton pass / node 配置を主対象とし、adapterConfig や wiki command sequence の詳細は別紙で詰める
 - runtime 側の具体契約は [paperclip-hermes-runtime-contract.md](D:/GitHub/quant-agent-platform/docs/paperclip-hermes-runtime-contract.md) を参照
@@ -59,6 +60,9 @@
 
 9. **直接スクリプトを運用 IF にしない**
    `ssh` や `docker run` は skill の内部実装としてのみ使い、上位の IF は `Hermes skill` として定義する。
+
+10. **Hermes / Paperclip が自律的に決められることは事前固定しない**
+   固定するのは hard IF、node 境界、安全境界、公開面、source of truth までに留める。分析粒度、DuckDB query、parquet 列設計、派生 export などは通常の開発のように先に細かく決めず、Hermes / Paperclip の改善ループの中で必要時に決めさせる。
 
 ---
 

@@ -62,6 +62,13 @@ Paperclip 側で見える Hermes 固有契約:
 
 - Layer A/B は既存 IF
 - Layer C はこのプロジェクトの運用規約
+- Layer C でも固定しすぎない
+
+補足:
+
+- このプロジェクトでは、Hermes / Paperclip が自律的に決められる事項を事前仕様にしすぎない
+- 先に固定するのは hard IF、security boundary、node routing、document key などの接着面だけに留める
+- 分析手順、DuckDB query、artifact の派生形式などは runtime で改善される余地を残す
 
 ---
 
@@ -140,8 +147,7 @@ Paperclip 側で見える Hermes 固有契約:
 
 `adapterConfig` は少なくとも以下を持つ。
 
-- 実行場所:
-  - `runtimeHost`
+- 実行文脈:
   - `cwd`
 - 実行制約:
   - `timeoutSec`
@@ -155,6 +161,12 @@ Paperclip 側で見える Hermes 固有契約:
   - `persistSession`
 - prompt:
   - `promptTemplate`
+
+重要:
+
+- `runtimeHost` は upstream の `hermes_local` 実 IF として確認済みの field ではない
+- node 配置は `adapterConfig` の必須 key ではなく、project policy として別に管理する
+- したがって runtime host の決定は本書の `Node Routing Contract` 側で扱う
 
 ---
 

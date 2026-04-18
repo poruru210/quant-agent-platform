@@ -9,7 +9,9 @@
 - ロールごとの責務
 - 主要 IF の対応関係
 
-詳細は末尾の参照文書へ進む。
+詳細は末尾の参照文書へ進む。  
+Hermes の初期セットアップ実務とこの設計の対応は [hermes-startup-practices-mapping.md](/D:/GitHub/quant-agent-platform/docs/hermes-startup-practices-mapping.md:1) を参照。
+Paperclip における role 指示と `SOUL.md` 相当の整理は [paperclip-agent-instructions-model.md](/D:/GitHub/quant-agent-platform/docs/paperclip-agent-instructions-model.md:1) を参照。
 
 ---
 
@@ -387,6 +389,12 @@ shadow run
 
 ## 10. 重要な設計判断
 
+補足原則:
+
+- hard IF と安全境界以外は、できるだけ事前に固定しない
+- Hermes / Paperclip が自律的に決めて改善できることは、通常の開発のように先回りで仕様化しない
+- この overview も「固定事項」と「自律判断に委ねる事項」を意識して読む
+
 ### 9.1 なぜ Hermes は `pi-ctl` か
 
 - `hermes_local` adapter の実 IF に最も素直
@@ -430,6 +438,7 @@ Hermes の既存 skill catalog 一次情報:
 
 ## 12. 最初に見るべき詳細文書
 
+- 恒久方針: [SOUL.md](D:/GitHub/quant-agent-platform/SOUL.md)
 - 全体設計: [paperclip-hermes-nautilus-design.md](D:/GitHub/quant-agent-platform/docs/paperclip-hermes-nautilus-design.md)
 - runtime / role policy: [paperclip-hermes-runtime-contract.md](D:/GitHub/quant-agent-platform/docs/paperclip-hermes-runtime-contract.md)
 - Hermes skill IF: [hermes-nautilus-skill-contract.md](D:/GitHub/quant-agent-platform/docs/hermes-nautilus-skill-contract.md)

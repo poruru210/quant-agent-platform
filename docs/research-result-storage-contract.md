@@ -13,6 +13,8 @@
 - `LLM-WIKI` には raw event log を直接入れず、`Hermes` が抽象化した lesson / rationale / comparison を戻す
 - `DuckDB` は `pi-research` / `pi-live` の両方で使ってよい
 - `DuckDB` は常駐 service ではなく、node-local query container として扱ってよい
+- parquet 列や DuckDB view は hard IF ではない
+- それらは必要時に Hermes が決め、後から改善できる余地を残す
 
 ---
 
@@ -127,7 +129,7 @@
 
 ## 4. 最小 artifact contract
 
-初期実装で最低限そろえる成果物:
+初期実装で最低限そろえる成果物の例:
 
 - `summary.json`
   - 実行メタデータと headline metrics
@@ -138,7 +140,7 @@
 - `positions.parquet`
 - `logs/nautilus.log`
 
-live 側で最低限そろえたい成果物:
+live 側で最低限そろえたい成果物の例:
 
 - `summary.json`
 - `ticks.parquet`
@@ -203,6 +205,15 @@ live 側で最低限そろえたい成果物:
 - import 手順を増やさずに始められる
 - run 完了直後にそのまま確認できる
 - truth を `parquet` に残せる
+
+### 5.4 事前固定しないこと
+
+- `metrics.parquet` の詳細列
+- `ticks.parquet` / `spreads.parquet` の詳細列
+- view 命名規約
+- export の細かな粒度
+
+これらは通常の事前設計対象ではなく、Hermes が issue 文脈と改善ループに応じて決める余地を残す。
 
 ---
 
@@ -287,6 +298,6 @@ wiki に戻すときの ref:
 
 ## 10. 未決事項
 
-- `metrics.parquet` / `ticks.parquet` / `spreads.parquet` の列標準をどこまで固定するか
-- `DuckDB` view を strategy ごとに持つか、run / instance 横断 view に寄せるか
+- `metrics.parquet` / `ticks.parquet` / `spreads.parquet` の列標準を本当に固定対象にするか
+- `DuckDB` view を strategy ごとに持つか、run / instance 横断 view に寄せるかを事前決定すべきか
 - `pi-live` の query export を `pi-research` 側へどこまで同期するか
